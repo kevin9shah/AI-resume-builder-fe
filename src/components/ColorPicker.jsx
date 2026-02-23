@@ -5,6 +5,7 @@ const ColorPicker = ({ selectedColor, onChange }) => {
   const colors = [
     { name: "Blue", value: "#3B82F6" },
     { name: "Green", value: "#08dd2c" },
+    { name: "Orange", value: "#FFA500" },
   ];
 
   const [isOpen, setIsOpen] = useState(false);
@@ -13,9 +14,9 @@ const ColorPicker = ({ selectedColor, onChange }) => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1 text-sm text-blue-600 bg-gradient-to-br from-blue-50 to-blue-100 ring-blue-300 hover:ring transition-all px-3 py-2 rounded-lg"
+        className="flex items-center gap-1 text-sm text-blue-600 bg-linear-to-br from-blue-50 to-blue-800 ring-blue-300 hover:ring transition-all px-3 py-2 rounded-lg"
       >
-        <Palette size={15} /> 
+        <Palette size={15} />
         <span className="max-sm:hidden">Accent</span>
       </button>
 
@@ -24,7 +25,7 @@ const ColorPicker = ({ selectedColor, onChange }) => {
           {colors.map((color) => (
             <div
               key={color.value}
-              onClick={() => {onChange(color.value); setIsOpen(false)}}
+              onClick={() => { onChange(color.value); setIsOpen(false) }}
               className="relative cursor-pointer group flex flex-col"
             >
               <div
