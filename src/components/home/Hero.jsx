@@ -1,9 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const {user} = useSelector(state => state.auth)
   return (
     <div>
       <>
@@ -132,15 +133,18 @@ const Hero = () => {
           <div className="flex items-center gap-4 mt-8">
             <Link to="/app?state=register">
               {" "}
-              <button className="bg-green-500 hover:bg-green-700 text-slate-50 rounded-full px-7 py-3 cursor-pointer">
+              <button className="bg-green-500 hover:bg-green-700 text-slate-50 rounded-full px-7 py-3 cursor-pointer"  hidden={user}>
                 Register
               </button>
             </Link>
             <Link to="/app?state=login">
               {" "}
-              <button className="bg-green-500 hover:bg-green-700 text-slate-50 rounded-full px-7 py-3 cursor-pointer">
+              <button className="bg-green-500 hover:bg-green-700 text-slate-50 rounded-full px-7 py-3 cursor-pointer" hidden={user}>
                 Login
               </button>
+            </Link>
+            <Link to='/app' className="bg-green-500 hover:bg-green-700 text-slate-50 rounded-full px-7 py-3 cursor-pointer" hidden={!user}>
+            Dashboard
             </Link>
           </div>
 
